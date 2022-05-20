@@ -1,0 +1,54 @@
+<div class="row pb-3">
+  <div class="col-6"><h1>Products</h1></div>
+  <div class="col-6 d-flex justify-content-end">
+    <button onclick="location.href = '/addProduct';" type="button" class="btn btn-primary align-self-center"><i class="bi bi-person-plus"></i> Add New Product</button>
+  </div>
+
+</div>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Product ID</th>
+      <th scope="col">Name</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Reorder Quantity</th>
+      <th scope="col">Description</th>
+      <th scope="col">Expiration Date</th>
+      <th scope="col">Category ID</th>
+      <th scope="col">Cost</th>
+      <th scope="col">Price</th>
+      <th scope="col">Vendor ID</th>
+      <th scope="col" class="text-end">Action</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each products}}
+    <tr>
+      <th scope="row">{{this.PRODUCT_ID}}</th>
+      <td>{{this.PRODUCT_NAME}}</td>
+      <td>{{this.QUANTITY}}</td>
+      <td>{{this.REDORDER_QUANTITY}}</td>
+      <td>{{this.DESCRIPTION}}</td>
+      <td>{{this.EXPIRATION_DATE}}</td>
+      <td>{{this.CATEGORY_ID}}</td>
+      <td>{{this.COST}}</td>
+      <td>{{this.PRICE}}</td>
+      <td>{{this.VENDOR_ID}}</td>
+      <td class="text-end" >
+          <a href="/editProduct/{{this.PRODUCT_ID}}" type="button" class="btn btn-outline-secondary btn-small"><i class="bi bi-pencil-square"> Edit</i></a>
+          <a href="/{{this.PRODUCT_ID}}" type="button" class="btn btn-outline-secondary btn-small">Delete</i></a>
+      </td>
+    {{/each}}
+
+    </tr>   
+  </tbody>
+</table>

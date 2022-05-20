@@ -1,0 +1,40 @@
+<div class="row pb-3">
+  <div class="col-6"><h1>Customers</h1></div>
+  <div class="col-6 d-flex justify-content-end">
+    <button onclick="location.href = '/addCustomer';" type="button" class="btn btn-primary align-self-center"><i class="bi bi-person-plus"></i> Add New Customer</button>
+  </div>
+</div>
+
+{{#if alert}}
+<div class="alert alert-success alert-dismissible fade show" role="alert">
+    {{alert}}
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{{/if}}
+
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th scope="col">Customer ID</th>
+      <th scope="col">First Name</th>
+      <th scope="col">Last Name</th>
+      <th scope="col">Phone Number</th>
+      <th scope="col" class="text-end">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each rows}}
+    <tr>
+      <th scope="row">{{this.CUSTOMER_ID}}</th>
+      <td>{{this.FIRST_NAME}}</td>
+      <td>{{this.LAST_NAME}}</td>
+      <td>{{this.PHONE_NUMBER}}</td>
+      <td class="text-end" >
+          <a href="/editCustomer/{{this.CUSTOMER_ID}}" type="button" class="btn btn-outline-secondary btn-small"><i class="bi bi-pencil-square">Edit</i></a>
+          <a href="/{{this.CUSTOMER_ID}}" type="button" class="btn btn-outline-secondary btn-small"><i class="bi bi-person-x">Delete</i></a>
+      </td>
+    {{/each}}
+
+    </tr>   
+  </tbody>
+</table>
